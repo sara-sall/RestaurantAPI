@@ -6,7 +6,6 @@ public class OrderItem {
     private int id;
     private int table;
     private ArrayList<MenuItem> menuItems;
-    private String other;
 
     public OrderItem() {
     }

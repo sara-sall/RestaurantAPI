@@ -23,8 +23,8 @@ public class ReadOrder {
     public ArrayList<OrderItem> readFile(){
         ArrayList orders = new ArrayList();
         Menu menu = new Menu();
-        ArrayList<MenuItem> menuItems = new ArrayList<>();
-        menuItems = menu.getMenu();
+        ArrayList<MenuItem> menuItems = menu.getMenu();
+
         while(scanner.hasNext()){
 
             ArrayList<MenuItem> foodOrder = new ArrayList<>();

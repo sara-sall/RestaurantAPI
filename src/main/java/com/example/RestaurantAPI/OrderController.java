@@ -3,9 +3,7 @@ package com.example.RestaurantAPI;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
-import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import java.util.Map;
 
 @RestController
 public class OrderController {
@@ -19,11 +17,14 @@ public class OrderController {
         return orders.getOrders();
     }
 
+    //TODO Better ID add
     @PostMapping("/orders")
     public OrderItem postOrderItem(@RequestBody OrderItem item){
         orders.addOrder(item);
         return item;
     }
+
+
 
     @GetMapping("/orders/{id}")
     public OrderItem getOrderItem(@PathVariable int id) {
@@ -39,9 +40,26 @@ public class OrderController {
         return orders.deleteOrder(id);
     }
 
+    //TODO patch
+    @PatchMapping("/orders({id}")
+    public OrderItem patchOrderItem(@PathVariable int id, @RequestBody Map<Object, Object> map){
+
+
+        return orders.patchOrderItem(map, id);
+    }
+
     @GetMapping("/menu")
     public List<MenuItem> getMenu(){
         return menu.getMenu();
+    }
+
+
+    @GetMapping("/menu/{id}")
+    public MenuItem getMenuItem(@PathVariable int id) {
+
+        MenuItem item = menu.getMenuItem(id);
+
+        return item;
     }
 
 

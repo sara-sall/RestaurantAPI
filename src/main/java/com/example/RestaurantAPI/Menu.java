@@ -18,18 +18,19 @@ public class Menu {
     }
 
     public MenuItem getItem(int id){
-        for(MenuItem menu: menuItems){
-            if(menu.getId() == id){
-                return menu;
+        for(MenuItem item: menuItems){
+            if(item.getId() == id){
+                return item;
             }
-
         }
         return null;
     }
-
-    public void addItem (MenuItem item){
-        item.setId(menuItems.size());
-        menuItems.add(item);
+    public MenuItem getMenuItem(int id){
+        for(MenuItem item :  menuItems) {
+            if (item.getId() == id)
+                return item;
+        }
+        return null;
     }
 
     private void saveData(){
@@ -38,14 +39,6 @@ public class Menu {
     }
 
     private ArrayList<MenuItem> getData(){
-/*      MenuItem pasta = new MenuItem(1, "Pasta", 80);
-        MenuItem hamburger = new MenuItem(2, "Hamburgare", 50);
-        MenuItem pizza = new MenuItem(3, "Pizza", 70);
-
-        menuItems.add(0, pasta);
-        menuItems.add(1, hamburger);
-        menuItems.add(2, pizza);*/
-
         ReadMenu readMenu = new ReadMenu();
 
         readMenu.openFile();
