@@ -9,8 +9,12 @@ public class Menu {
 
     public Menu() {
         this.menuItems = new ArrayList<>();
-        addData();
-        saveData();
+        menuItems=getData();
+    }
+
+    public ArrayList<MenuItem> getMenu() {
+
+        return menuItems;
     }
 
     public MenuItem getItem(int id){
@@ -33,7 +37,7 @@ public class Menu {
         writeMenu.writeMenu(menuItems);
     }
 
-    private void addData(){
+    private ArrayList<MenuItem> getData(){
 /*      MenuItem pasta = new MenuItem(1, "Pasta", 80);
         MenuItem hamburger = new MenuItem(2, "Hamburgare", 50);
         MenuItem pizza = new MenuItem(3, "Pizza", 70);
@@ -45,7 +49,13 @@ public class Menu {
         ReadMenu readMenu = new ReadMenu();
 
         readMenu.openFile();
-        readMenu.readFile();
+        ArrayList data = readMenu.readFile();
         readMenu.closeFile();
+
+        return data;
+
+
+
+
     }
 }

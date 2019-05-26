@@ -1,6 +1,7 @@
 package com.example.RestaurantAPI;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ReadMenu {
@@ -19,18 +20,22 @@ public class ReadMenu {
 
     }
 
-    public void readFile(){
+    public ArrayList<MenuItem> readFile(){
+        ArrayList menu = new ArrayList();
         while(scanner.hasNext()){
-           // int id = Integer.parseInt(scanner.next());
+            int id = Integer.parseInt(scanner.next());
             String name = scanner.next();
-           // double price = Double.parseDouble(scanner.next());
+            double price = Double.parseDouble(scanner.next());
 
-           // MenuItem menuItem = new MenuItem();
-           // menuItem.setId(id);
-           // menuItem.setName(name);
-           // menuItem.setPrice(price);
-            System.out.println(name);
+            MenuItem menuItem = new MenuItem();
+            menuItem.setId(id);
+            menuItem.setName(name);
+            menuItem.setPrice(price);
+
+            menu.add(menuItem);
+
         }
+        return menu;
     }
 
     public void closeFile(){

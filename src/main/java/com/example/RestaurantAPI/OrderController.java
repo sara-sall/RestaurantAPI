@@ -11,6 +11,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class OrderController {
 
     private Orders orders = new Orders();
+    private Menu menu = new Menu();
 
     @GetMapping("/orders")
     public List<OrderItem> getOrders() {
@@ -37,6 +38,13 @@ public class OrderController {
 
         return orders.deleteOrder(id);
     }
+
+    @GetMapping("/menu")
+    public List<MenuItem> getMenu(){
+        return menu.getMenu();
+    }
+
+
 
 
 

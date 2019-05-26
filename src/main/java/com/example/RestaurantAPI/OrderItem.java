@@ -11,11 +11,10 @@ public class OrderItem {
     public OrderItem() {
     }
 
-    public OrderItem(int id, int table, ArrayList<MenuItem> menuItems, String other) {
+    public OrderItem(int id, int table, ArrayList<MenuItem> menuItems) {
         this.id = id;
         this.table = table;
         this.menuItems = menuItems;
-        this.other = other;
     }
 
     public int getId() {
@@ -40,13 +39,5 @@ public class OrderItem {
 
     public void setMenuItems(ArrayList<MenuItem> menuItems) {
         this.menuItems = menuItems;
-    }
-
-    public String getOther() {
-        return other;
-    }
-
-    public void setOther(String other) {
-        this.other = other;
     }
 }

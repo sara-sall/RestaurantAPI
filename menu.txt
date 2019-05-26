@@ -1,0 +1,4 @@
+1 Pasta 80
+2 Hamburgare 50
+3 Pizza 70
+4 Fisk 60

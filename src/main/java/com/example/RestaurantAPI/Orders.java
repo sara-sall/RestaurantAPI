@@ -5,11 +5,14 @@ import java.util.List;
 
 public class Orders {
 
-    private List<OrderItem> orders;
+    private ArrayList<OrderItem> orders;
 
     public Orders() {
         this.orders = new ArrayList<>();
-        addData();
+        //addData();
+        //saveData();
+        orders = getData();
+
     }
 
     public List<OrderItem> getOrders() {
@@ -27,8 +30,9 @@ public class Orders {
     }
 
     public void addOrder (OrderItem item){
-        item.setId(orders.size());
+        item.setId(orders.size()+1);
         orders.add(item);
+        saveData();
     }
 
     public OrderItem deleteOrder (int id){
@@ -53,7 +57,7 @@ public class Orders {
         order2.add(menu.getItem(2));
         order2.add(menu.getItem(3));
 
-        order3.add(menu.getItem(3));
+        order3.add(menu.getItem(4));
         order3.add(menu.getItem(1));
 
        // MenuItem pasta = new MenuItem("1", "Pasta", 80);
@@ -68,12 +72,32 @@ public class Orders {
         // order3.add(pizza);
         // order3.add(pasta);
 
-        OrderItem orderNr1 = new OrderItem(1, 1, order1, "");
-        OrderItem orderNr2 = new OrderItem(2, 2, order2, "Ingen tomat på hamburgaren");
-        OrderItem orderNr3 = new OrderItem(3, 3, order3, "");
+        OrderItem orderNr1 = new OrderItem(1, 1, order1);
+        OrderItem orderNr2 = new OrderItem(2, 2, order2);
+        OrderItem orderNr3 = new OrderItem(3, 3, order3);
 
         orders.add(orderNr1);
         orders.add(orderNr2);
         orders.add(orderNr3);
+    }
+
+    private void saveData(){
+        WriteOrder writeOrder = new WriteOrder();
+        writeOrder.writeOrder(orders);
+    }
+
+    private ArrayList<OrderItem> getData(){
+
+        ReadOrder readOrder = new ReadOrder();
+
+        readOrder.openFile();
+        ArrayList data = readOrder.readFile();
+        readOrder.closeFile();
+
+        return data;
+
+
+
+
     }
 }
