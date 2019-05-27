@@ -1,9 +1,6 @@
 package com.example.RestaurantAPI;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Orders {
 
@@ -20,45 +17,65 @@ public class Orders {
         return orders;
     }
 
-    public OrderItem getOrderItem(int id){
-        for(OrderItem item :  orders) {
-            if (item.getId() == id)
-                return item;
-        }
-
-        return null;
+    public OrderItem getOrderItem(String id){
+        return getOrderItemById(id);
     }
 
-    public void addOrder (OrderItem item){
+    public OrderItem postOrderItem(String id, MenuItem item){
+        Menu menu = new Menu();
+        for(MenuItem mItem:menu.getMenu()){
+            if(mItem.getId() == item.getId()){
+                item=mItem;
+            }
+        }
+        OrderItem order = getOrderItemById(id);
+        order.getMenuItems().add(item);
+        saveData();
+
+        return order;
+    }
+
+    public OrderItem deleteOrderItem(String orderId, int itemId){
+        OrderItem order = getOrderItemById(orderId);
+        for(MenuItem item: order.getMenuItems()){
+            if(item.getId() == itemId){
+                order.getMenuItems().remove(item);
+                saveData();
+            }
+        }
+        return order;
+
+    }
+
+    public void postOrder (OrderItem item){
         ArrayList<MenuItem> foodOrder = new ArrayList<>();
         for(MenuItem mItem: item.getMenuItems()){
             Menu menu = new Menu();
             foodOrder.add(menu.getMenuItem(mItem.getId()));
         }
         item.setMenuItems(foodOrder);
-        item.setId(orders.size()+1);
+        UUID uuid = UUID.randomUUID();
+        item.setId(uuid.toString());
         orders.add(item);
         saveData();
     }
-    public OrderItem patchOrderItem(Map<Object, Object> map, int id){
-        OrderItem item = getOrderItem(id);
 
-        saveData();
+
+    public OrderItem deleteOrder (String id){
+        OrderItem item = getOrderItemById(id);
+        if(item != null){
+            orders.remove(item);
+            saveData();
+        }
         return item;
-
-
-
     }
 
-    public OrderItem deleteOrder (int id){
-        for(OrderItem item: orders){
-            if(item.getId() == id){
-                orders.remove(item);
-                saveData();
+    private OrderItem getOrderItemById(String id){
+        for(OrderItem item :  orders) {
+            if (item.getId().equals(id))
                 return item;
-
-            }
         }
+
         return null;
     }
 
@@ -77,9 +94,6 @@ public class Orders {
         readOrder.closeFile();
 
         return data;
-
-
-
 
     }
 }

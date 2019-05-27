@@ -13,7 +13,7 @@ public class WriteOrder {
         try{
             PrintWriter pw = new PrintWriter(filename);
             for(OrderItem item : orders){
-                String id = String.valueOf(item.getId());
+                String id = item.getId();
                 String table = String.valueOf(item.getTable());
                 String foodOrder = "";
                 for(MenuItem menuItem: item.getMenuItems()){

@@ -7,8 +7,7 @@ public class MenuItem {
     private double price;
 
 
-    public MenuItem() {
-    }
+    public MenuItem() { }
 
     public MenuItem(int id, String name, double price) {
         this.id = id;

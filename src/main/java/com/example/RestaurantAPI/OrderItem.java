@@ -3,24 +3,23 @@ package com.example.RestaurantAPI;
 import java.util.ArrayList;
 
 public class OrderItem {
-    private int id;
+    private String id;
     private int table;
     private ArrayList<MenuItem> menuItems;
 
-    public OrderItem() {
-    }
+    public OrderItem() { }
 
-    public OrderItem(int id, int table, ArrayList<MenuItem> menuItems) {
+    public OrderItem(String id, int table, ArrayList<MenuItem> menuItems) {
         this.id = id;
         this.table = table;
         this.menuItems = menuItems;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

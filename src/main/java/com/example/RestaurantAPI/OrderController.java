@@ -17,17 +17,15 @@ public class OrderController {
         return orders.getOrders();
     }
 
-    //TODO Better ID add
     @PostMapping("/orders")
     public OrderItem postOrderItem(@RequestBody OrderItem item){
-        orders.addOrder(item);
+        orders.postOrder(item);
         return item;
     }
 
 
-
     @GetMapping("/orders/{id}")
-    public OrderItem getOrderItem(@PathVariable int id) {
+    public OrderItem getOrderItem(@PathVariable String id) {
 
         OrderItem item = orders.getOrderItem(id);
 
@@ -35,17 +33,19 @@ public class OrderController {
     }
 
     @DeleteMapping("/orders/{id}")
-    public OrderItem deleteOrder(@PathVariable int id) {
+    public OrderItem deleteOrder(@PathVariable String id) {
 
         return orders.deleteOrder(id);
     }
 
-    //TODO patch
-    @PatchMapping("/orders({id}")
-    public OrderItem patchOrderItem(@PathVariable int id, @RequestBody Map<Object, Object> map){
+    @PostMapping("/orders/{id}/item")
+    public OrderItem postOrderItem(@PathVariable String id, @RequestBody MenuItem item){
+        return orders.postOrderItem(id, item);
+    }
 
-
-        return orders.patchOrderItem(map, id);
+    @DeleteMapping("/orders/{orderId}/item/{itemId}")
+    public OrderItem deleteOrderItem(@PathVariable String orderId, @PathVariable int itemId){
+        return orders.deleteOrderItem(orderId, itemId);
     }
 
     @GetMapping("/menu")

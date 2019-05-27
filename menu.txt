@@ -2,3 +2,6 @@
 2 Hamburgare 50
 3 Pizza 70
 4 Fisk 60
+5 Kycklinggratäng 60
+7 Läsk 15
+8 PommesFrites 20

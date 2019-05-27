@@ -29,7 +29,7 @@ public class ReadOrder {
 
             ArrayList<MenuItem> foodOrder = new ArrayList<>();
 
-            int id = Integer.parseInt(scanner.next());
+            String id = scanner.next();
             int table = Integer.parseInt(scanner.next());
             String menuItemsId = scanner.next();
 
